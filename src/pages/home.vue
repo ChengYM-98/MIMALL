@@ -1,6 +1,5 @@
 <template>
     <div>
-        
         <!-- 标签名称根据下面的引入来的 -->
         <nav-header></nav-header>
         <router-view></router-view>
