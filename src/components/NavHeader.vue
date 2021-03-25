@@ -13,7 +13,7 @@
                     <a href="javaScript:;" v-if="username">{{username}}</a>
                     <a href="javaScript:;" v-if="!username" @click="login()">登录</a>
                     <a href="javaScript:;">我的订单</a>
-                    <a href="javaScript:;" class="my-cart" @click="gotoCart()"><span class="icon-cart"></span> 购物车</a>
+                    <a href="javaScript:;" class="my-cart" @click="gotoCart()"><span class="icon-cart"></span> 购物车 ({{cartCount}})</a>
                 </div>
             </div>
         </div>
@@ -225,9 +225,17 @@ export default {
     name:'nav-header',
     data() {
         return {
-            username:'',
+            // username:this.$store.state.username,
             phoneList:[],
 
+        }
+    },
+    computed:{
+        username(){
+            return this.$store.state.username;
+        },
+        cartCount(){
+            return this.$store.state.cartCount;
         }
     },
     //过滤器

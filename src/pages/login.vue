@@ -61,6 +61,8 @@ export default {
                 password
             }).then((res)=>{
                 this.$cookie.set('userId',res.id,{expires:'1M'});
+
+                this.$store.dispatch('saveUserName',res.username);
                 // todo 保存用户名
                 this.$router.push('/index');
             })
@@ -130,7 +132,7 @@ export default {
                     input{
                         width: 328px;
                         height: 50px;
-                        margin: 20px 0;
+                        margin: 10px 0;
                         border: 1px solid #E5E5E5;
                         padding-left: 18px;
                         font-size: 14px;
@@ -146,6 +148,7 @@ export default {
                         cursor: pointer;
                         font-size: 16px;
                         margin-bottom: 14px;
+                        margin-top: 20px;
                         
                     }
                     ul{
