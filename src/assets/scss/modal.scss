@@ -1,9 +1,9 @@
 .modal{
-    @include positon(fixed);
+    @include position(fixed);
     z-index: 10;
     transition: all .5s;
     .mask{
-        @include positon(fixed);
+        @include position(fixed);
         background-color: $colorI;
         opacity: 0.5;
     }
@@ -17,7 +17,7 @@
         top: -100%;
     }
     .modal-dialog{
-        @include positon(absolute,40%,50%,auto,660px);
+        @include position(absolute,40%,50%,auto,660px);
         background-color:$colorG;
         transform: translate(-50%,-50%);
         .modal-header{
@@ -27,7 +27,7 @@
             line-height: 60px;
             font-size: $fontI;
             .icon-close{
-                @include positonImg(absolute,23px,25px,14px,14px,'/imgs/icon-close.png');
+                @include positionImg(absolute,23px,25px,14px,14px,'/imgs/icon-close.png');
                 transition: transform .3s;
                 &:hover{
                 transform:scale(1.5);
