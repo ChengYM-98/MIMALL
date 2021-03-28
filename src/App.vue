@@ -61,5 +61,4 @@ export default {
 @import './assets/scss/modal.scss';
 @import './assets/scss/button.scss';
 
-
 </style>

@@ -11,7 +11,7 @@ const state = {
 }
 
 export default new Vuex.Store({
-    state,      //等价于 state : state
+    state,      //等价于 state : statePin
     mutations,
     actions
 });
