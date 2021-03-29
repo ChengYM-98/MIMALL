@@ -4,6 +4,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueLazyLoad from  'vue-lazyload'
 import VueCookie from 'vue-cookie'
+import { Message } from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import App from './App.vue'
 
@@ -35,7 +37,8 @@ axios.interceptors.response.use(function(response){
     }
     return Promise.reject(res);
   }else{
-    alert(res.msg);
+    // alert(res.msg);
+    this.$message.warning(res.msg);
     return Promise.reject(res);
   }
 });
@@ -43,13 +46,15 @@ axios.interceptors.response.use(function(response){
 //将axios挂载到原型
 Vue.use(VueAxios,axios);
 Vue.use(VueCookie);
+Vue.use(Message);
 
 //全局使用图片懒加载
 Vue.use(VueLazyLoad,{
   loading:'/imgs/loading-svg/loading-bars.svg'
 });
-Vue.prototype.$axios = axios
-Vue.config.productionTip = false
+Vue.prototype.$axios = axios;
+Vue.config.productionTip = false;
+Vue.prototype.$message = Message;
 
 new Vue({
   store,

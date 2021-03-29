@@ -18,8 +18,11 @@ export default {
     }
   },
   mounted() {
-    this.getUser();
-    this.getCartCount();
+    if(this.$cookie.get('userId')){
+      this.getUser();
+      this.getCartCount();
+    }
+  
 
     //本地加载请求静态文件json文件的形式
     // this.axios.get('/mock/user/login.json').then((res)=>{

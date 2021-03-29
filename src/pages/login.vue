@@ -40,6 +40,7 @@
 
 <script>
 import NavFooter from './../components/NavFooter'
+
 export default {
     name:'login',
     components:{
@@ -60,11 +61,16 @@ export default {
                 username,
                 password
             }).then((res)=>{
-                this.$cookie.set('userId',res.id,{expires:'1M'});
+                this.$cookie.set('userId',res.id,{expires:'Session'});
 
                 this.$store.dispatch('saveUserName',res.username);
                 // todo 保存用户名
-                this.$router.push('/index');
+                this.$router.push({
+                    name:'index',
+                    params:{
+                        from:'login'
+                    }
+                });
             })
         },
         register(){
@@ -73,7 +79,7 @@ export default {
                 password:'123456',
                 emall:'cym.98@qq.com'
             }).then(()=>{
-                alert('注册成功！')
+                this.$message.success('注册成功！')
             })
         }
     },

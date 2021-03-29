@@ -24,7 +24,7 @@
             </template>
             <div class="detail-slide">
                 <h1>{{product.name}}</h1>
-                <p>相机全新升级 / 960帧超慢动作 / 手持超级夜景 / 全球首款双频GPS / 骁龙845处理器 / 红 外人脸解锁 / A</p>
+                <p>相机全新升级 / 960帧超慢动作 / 手持超级夜景 / 全球首款双频GPS / 骁龙845处理器 / 红外人脸解锁 / AI变焦双摄 / 三星 AMOLED屏</p>
                 <h2>小米自营</h2>
                 <h3>{{product.price}}元 <span>2999元</span></h3>
                 <!-- 收货地址 -->
