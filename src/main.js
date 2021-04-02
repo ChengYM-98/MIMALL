@@ -46,7 +46,7 @@ axios.interceptors.response.use(function(response){
 //将axios挂载到原型
 Vue.use(VueAxios,axios);
 Vue.use(VueCookie);
-Vue.use(Message);
+Vue.component(Message);
 
 //全局使用图片懒加载
 Vue.use(VueLazyLoad,{

@@ -23,7 +23,7 @@
                             </li>
 
                             <li> 
-                                <a href="">立即注册</a> 
+                                <a href="">立即注册</a>
                                 <span>|</span> 
                                 <a href="">忘记密码？</a>
                             </li>
