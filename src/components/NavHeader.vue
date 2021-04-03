@@ -324,6 +324,9 @@ export default {
                         
                         margin-right: 4px;
                     }
+                    &:hover{
+                        background-color: $colorA;
+                    }
                 }
             }
         }
