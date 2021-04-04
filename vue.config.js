@@ -12,9 +12,11 @@ module.exports = {
         }
       }
     },
+    // publicPath : './',
     // lintOnSave:false,
+    outputDir:'mimall',
     productionSourceMap:false,
     chainWebpack:(config)=>{
       config.plugins.delete('prefetch')
-    }
+    },
   }

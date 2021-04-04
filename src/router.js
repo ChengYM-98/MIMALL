@@ -12,6 +12,7 @@ export default new Router({
     routes: [
         {
             path: '/',
+            // base:'',
             name: 'home',
             component: Home,
             //重定向到index
