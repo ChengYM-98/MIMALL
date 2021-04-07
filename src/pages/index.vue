@@ -48,8 +48,7 @@
                 <!-- 轮播图 -->
                 <swiper :options="swiperOption">
                 <swiper-slide v-for="(item, index) in slideList" :key="index">
-                    <a :href="'/#/product/' + item.id"
-                    ><img :src="item.img" alt=""
+                    <a href="javascript:;" @click="goToProduct(item.id)"><img :src="item.img" alt=""
                     /></a>
                 </swiper-slide>
                 <!-- 分页器控制 -->
@@ -238,6 +237,7 @@ data() {
   },
   mounted() {
       this.init();
+      
   },
   methods: {
       init(){
@@ -251,6 +251,14 @@ data() {
               res.list = res.list.slice(6,14);
               this.phoneList = [res.list.slice(0,4), res.list.slice(4,8)];
           })
+      },
+      goToProduct(itemId){
+        if(itemId == ""){
+          this.$message.warning('这个图片没有接口o(╥﹏╥)o');
+        }else{
+          this.$router.push('/product/'+itemId);
+        }
+        
       },
       addCart(id){
         // console.log('1');

@@ -15,7 +15,7 @@ module.exports = {
     // publicPath : './',
     // lintOnSave:false,
     outputDir:'mimall',
-    productionSourceMap:false,
+    productionSourceMap:true,
     chainWebpack:(config)=>{
       config.plugins.delete('prefetch')
     },

@@ -11,7 +11,7 @@
                     <div class="login-form-header">
                         <p>账号登录</p>
                         <span>|</span>
-                        <p>扫码登录</p>
+                        <p @click="unregister()">扫码登录</p>
                     </div>
                     <div class="login-form-center">
                         <input type="text" placeholder="邮箱/手机号码/小米ID" v-model="username">
@@ -19,13 +19,13 @@
                         <button class="login-btn" @click="login">登录</button>
                         <ul>
                             <li>  
-                                <a href="javascript:;" @click="register">手机短信登录/注册</a>
+                                <a href="javascript:;" @click="unregister()">手机短信登录/注册</a>
                             </li>
 
                             <li> 
-                                <a href="">立即注册</a>
+                                <a href="javascript:;" @click="unregister()">立即注册</a>
                                 <span>|</span> 
-                                <a href="">忘记密码？</a>
+                                <a href="javascript:;" @click="unregister()">忘记密码？</a>
                             </li>
                         </ul>
                     </div>
@@ -53,25 +53,43 @@ export default {
             userId:'',
         }
     },
+    mounted() {
+        window.addEventListener('keydown',this.keyDown);
+    },
     methods: {
+        keyDown(e){
+            //如果是回车则执行登录方法
+            if(e.keyCode == 13){
+            this.login();
+            }
+        },
         login(){
             // let username = this.username;
             let {username,password} = this;
-            this.axios.post('/user/login',{
+            if( username==''|| password==''){
+                this.$message.warning('请填写 账号：ming  密码：123456')
+            }else{
+                this.axios.post('/user/login',{
                 username,
                 password
-            }).then((res)=>{
-                this.$cookie.set('userId',res.id,{expires:'Session'});
-
-                this.$store.dispatch('saveUserName',res.username);
-                // todo 保存用户名
-                this.$router.push({
-                    name:'index',
-                    params:{
-                        from:'login'
-                    }
-                });
-            })
+                }).then((res)=>{
+                    this.$cookie.set('userId',res.id,{expires:'Session'});
+                    this.$store.dispatch('saveUserName',res.username);
+                    // todo 保存用户名
+                    this.$router.push({
+                        name:'index',
+                        params:{
+                            from:'login'
+                        }
+                    });
+                }).catch(()=>{
+                    this.$message.error('用户名或密码错误，若您未注册可使用 账号：ming  密码：123456')
+                })
+            }
+            
+        },
+        unregister(){
+            this.$message.warning('该功能未实现');
         },
         register(){
             this.axios.post('/user/register',{
@@ -83,6 +101,9 @@ export default {
             })
         }
     },
+    destroyed(){
+        window.removeEventListener('keydown',this.keyDown,false);
+    }
 }
 </script>
 
@@ -90,9 +111,7 @@ export default {
 @import '../assets/scss/config.scss';
     .login{
         width: 100%;
-        .login-header{
-            
-        }.container{
+        .container{
             position: relative;
         }
         .login-box{
@@ -110,7 +129,7 @@ export default {
                     justify-content: space-between;
                     height: 100px;
                     p{
-                        
+                        cursor: pointer;
                         margin-left:70px;
                         padding-top: 20px;
                         font-size: 23px;

@@ -38,12 +38,12 @@ axios.interceptors.response.use(function(response){
     return Promise.reject(res);
   }else{
     // alert(res.msg);
-    this.$message.warning(res.msg);
+    // Message.error(res.msg);
     return Promise.reject(res);
   }
 },(error)=>{
-    let res = error.response;
-    this.$message.warning(res.data.message);
+    // let res = error.response;
+    // Message.error(res.data.message);
     return Promise.reject(error);
 
 
